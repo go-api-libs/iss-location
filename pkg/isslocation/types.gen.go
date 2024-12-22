@@ -19,16 +19,16 @@ type ISSPosition struct {
 
 // PeopleInSpace defines a model
 type PeopleInSpace struct {
-	People  Astronauts `json:"people,omitempty"`
-	Number  int        `json:"number,omitzero"`
-	Message string     `json:"message,omitzero"`
+	People  People `json:"people,omitempty"`
+	Number  int    `json:"number,omitzero"`
+	Message string `json:"message,omitzero"`
 }
 
-// Astronauts defines a model
-type Astronauts []Astronaut
+// People defines a model
+type People []Person
 
-// Astronaut defines a model
-type Astronaut struct {
+// Person defines a model
+type Person struct {
 	Craft string `json:"craft,omitzero"`
 	Name  string `json:"name,omitzero"`
 }

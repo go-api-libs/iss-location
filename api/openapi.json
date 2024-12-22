@@ -90,7 +90,7 @@
         "type": "object",
         "properties": {
           "people": {
-            "$ref": "#/components/schemas/Astronauts"
+            "$ref": "#/components/schemas/People"
           },
           "number": {
             "type": "integer",
@@ -161,10 +161,10 @@
           "message": "success"
         }
       },
-      "Astronauts": {
+      "People": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/Astronaut"
+          "$ref": "#/components/schemas/Person"
         },
         "example": [
           {
@@ -217,7 +217,7 @@
           }
         ]
       },
-      "Astronaut": {
+      "Person": {
         "type": "object",
         "properties": {
           "craft": {
