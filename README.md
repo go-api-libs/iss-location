@@ -78,7 +78,7 @@ func main() {
 ## Additional Information
 
 - [**Go Reference**](https://pkg.go.dev/github.com/go-api-libs/iss-location/pkg/isslocation): The Go reference documentation for the client package.
-- [**Official Documentation**](http://open-notify.org/Open-Notify-API/ISS-Location-Now/): The official API documentation.
+- [**Official Documentation**](http://open-notify.org): The official API documentation.
 - [**OpenAPI Specification**](./api/openapi.json): The OpenAPI 3.1.0 specification.
 - [**Go Report Card**](https://goreportcard.com/report/github.com/go-api-libs/iss-location): Check the code quality report.
 

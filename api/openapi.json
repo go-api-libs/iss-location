@@ -326,6 +326,6 @@
   },
   "externalDocs": {
     "description": "API documentation",
-    "url": "http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
+    "url": "http://open-notify.org"
   }
 }
