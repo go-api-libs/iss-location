@@ -16,3 +16,19 @@ type ISSPosition struct {
 	Longitude string `json:"longitude,omitzero"`
 	Latitude  string `json:"latitude,omitzero"`
 }
+
+// GetAstrosJSONOkJSONResponse defines a model
+type GetAstrosJSONOkJSONResponse struct {
+	People  GetAstrosJSONOkJSONResponsePeople `json:"people,omitempty"`
+	Number  int                               `json:"number,omitzero"`
+	Message string                            `json:"message,omitzero"`
+}
+
+// GetAstrosJSONOkJSONResponsePeople defines a model
+type GetAstrosJSONOkJSONResponsePeople []GetAstrosJSONOkJSONResponsePeopleItems
+
+// GetAstrosJSONOkJSONResponsePeopleItems defines a model
+type GetAstrosJSONOkJSONResponsePeopleItems struct {
+	Craft string `json:"craft,omitzero"`
+	Name  string `json:"name,omitzero"`
+}

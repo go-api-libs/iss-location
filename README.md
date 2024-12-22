@@ -3,7 +3,7 @@
 [![Official Documentation](https://img.shields.io/badge/docs-API-blue)](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.1-blue)](/api/openapi.json)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-api-libs/iss-location)](https://goreportcard.com/report/github.com/go-api-libs/iss-location)
-![Code Coverage](https://img.shields.io/badge/coverage-24%25-red)
+![Code Coverage](https://img.shields.io/badge/coverage-38%25-orange)
 ![API Health](https://img.shields.io/badge/API_health-90%25-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
@@ -19,7 +19,7 @@ go get github.com/go-api-libs/iss-location/pkg/isslocation
 
 ## Usage
 
-### Example: 
+### Example 1: 
 
 ```go
 package main
@@ -43,6 +43,34 @@ func main() {
 	}
 
 	// Use issLocation object
+}
+
+```
+
+### Example 2: 
+
+```go
+package main
+
+import (
+	"context"
+
+	"github.com/go-api-libs/iss-location/pkg/isslocation"
+)
+
+func main() {
+	c, err := isslocation.NewClient()
+	if err != nil {
+		panic(err)
+	}
+
+	ctx := context.Background()
+	getAstrosJSONOkJSONResponse, err := c.GetAstrosJSON(ctx)
+	if err != nil {
+		panic(err)
+	}
+
+	// Use getAstrosJSONOkJSONResponse object
 }
 
 ```

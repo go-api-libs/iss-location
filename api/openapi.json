@@ -20,6 +20,16 @@
           }
         }
       }
+    },
+    "/astros.json": {
+      "get": {
+        "operationId": "GetAstrosJSON",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetAstrosJSONOkResponse"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -73,6 +83,158 @@
           "longitude": "2.6217",
           "latitude": "-19.5888"
         }
+      },
+      "GetAstrosJSONOkJSONResponse": {
+        "type": "object",
+        "properties": {
+          "people": {
+            "$ref": "#/components/schemas/GetAstrosJSONOkJSONResponsePeople"
+          },
+          "number": {
+            "type": "integer",
+            "example": 12
+          },
+          "message": {
+            "type": "string",
+            "example": "success"
+          }
+        },
+        "required": [
+          "people",
+          "number",
+          "message"
+        ],
+        "example": {
+          "people": [
+            {
+              "craft": "ISS",
+              "name": "Oleg Kononenko"
+            },
+            {
+              "craft": "ISS",
+              "name": "Nikolai Chub"
+            },
+            {
+              "craft": "ISS",
+              "name": "Tracy Caldwell Dyson"
+            },
+            {
+              "craft": "ISS",
+              "name": "Matthew Dominick"
+            },
+            {
+              "craft": "ISS",
+              "name": "Michael Barratt"
+            },
+            {
+              "craft": "ISS",
+              "name": "Jeanette Epps"
+            },
+            {
+              "craft": "ISS",
+              "name": "Alexander Grebenkin"
+            },
+            {
+              "craft": "ISS",
+              "name": "Butch Wilmore"
+            },
+            {
+              "craft": "ISS",
+              "name": "Sunita Williams"
+            },
+            {
+              "craft": "Tiangong",
+              "name": "Li Guangsu"
+            },
+            {
+              "craft": "Tiangong",
+              "name": "Li Cong"
+            },
+            {
+              "craft": "Tiangong",
+              "name": "Ye Guangfu"
+            }
+          ],
+          "number": 12,
+          "message": "success"
+        }
+      },
+      "GetAstrosJSONOkJSONResponsePeople": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GetAstrosJSONOkJSONResponsePeopleItems"
+        },
+        "example": [
+          {
+            "craft": "ISS",
+            "name": "Oleg Kononenko"
+          },
+          {
+            "craft": "ISS",
+            "name": "Nikolai Chub"
+          },
+          {
+            "craft": "ISS",
+            "name": "Tracy Caldwell Dyson"
+          },
+          {
+            "craft": "ISS",
+            "name": "Matthew Dominick"
+          },
+          {
+            "craft": "ISS",
+            "name": "Michael Barratt"
+          },
+          {
+            "craft": "ISS",
+            "name": "Jeanette Epps"
+          },
+          {
+            "craft": "ISS",
+            "name": "Alexander Grebenkin"
+          },
+          {
+            "craft": "ISS",
+            "name": "Butch Wilmore"
+          },
+          {
+            "craft": "ISS",
+            "name": "Sunita Williams"
+          },
+          {
+            "craft": "Tiangong",
+            "name": "Li Guangsu"
+          },
+          {
+            "craft": "Tiangong",
+            "name": "Li Cong"
+          },
+          {
+            "craft": "Tiangong",
+            "name": "Ye Guangfu"
+          }
+        ]
+      },
+      "GetAstrosJSONOkJSONResponsePeopleItems": {
+        "type": "object",
+        "properties": {
+          "craft": {
+            "type": "string",
+            "example": "ISS"
+          },
+          "name": {
+            "type": "string",
+            "example": "Oleg Kononenko"
+          }
+        },
+        "required": [
+          "craft",
+          "name"
+        ],
+        "example": {
+          "craft": "ISS",
+          "name": "Oleg Kononenko"
+        }
       }
     },
     "responses": {
@@ -89,6 +251,70 @@
                 "longitude": "2.6217",
                 "latitude": "-19.5888"
               },
+              "message": "success"
+            }
+          }
+        }
+      },
+      "GetAstrosJSONOkResponse": {
+        "description": "TODO",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GetAstrosJSONOkJSONResponse"
+            },
+            "example": {
+              "people": [
+                {
+                  "craft": "ISS",
+                  "name": "Oleg Kononenko"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Nikolai Chub"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Tracy Caldwell Dyson"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Matthew Dominick"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Michael Barratt"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Jeanette Epps"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Alexander Grebenkin"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Butch Wilmore"
+                },
+                {
+                  "craft": "ISS",
+                  "name": "Sunita Williams"
+                },
+                {
+                  "craft": "Tiangong",
+                  "name": "Li Guangsu"
+                },
+                {
+                  "craft": "Tiangong",
+                  "name": "Li Cong"
+                },
+                {
+                  "craft": "Tiangong",
+                  "name": "Ye Guangfu"
+                }
+              ],
+              "number": 12,
               "message": "success"
             }
           }
