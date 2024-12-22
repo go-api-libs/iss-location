@@ -1,6 +1,6 @@
 # 🛰️ ISS Current Location
 [![Go Reference](https://pkg.go.dev/badge/github.com/go-api-libs/iss-location.svg)](https://pkg.go.dev/github.com/go-api-libs/iss-location/pkg/isslocation)
-[![Official Documentation](https://img.shields.io/badge/docs-API-blue)](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
+[![Official Documentation](https://img.shields.io/badge/docs-API-blue)](http://open-notify.org)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.1-blue)](/api/openapi.json)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-api-libs/iss-location)](https://goreportcard.com/report/github.com/go-api-libs/iss-location)
 ![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
