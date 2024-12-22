@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "ISS Current Location",
-    "description": "Provides the current location of the International Space Station including latitude, longitude, and timestamp. Offers both JSON and JSONP formats for easy access. Users are advised to poll the API no more than once every 5 seconds.",
+    "description": "Provides the current location of the International Space Station (including latitude, longitude, and timestamp) and a list of people currently in space. Users are advised to poll the API no more than once every 5 seconds.",
     "version": "1.0.0"
   },
   "servers": [
@@ -13,6 +13,7 @@
   "paths": {
     "/iss-now.json": {
       "get": {
+        "summary": "Get the current location of the International Space Station",
         "operationId": "GetIssLocation",
         "responses": {
           "200": {
@@ -23,10 +24,11 @@
     },
     "/astros.json": {
       "get": {
-        "operationId": "GetAstrosJSON",
+        "summary": "Get a list of astronauts currently in space",
+        "operationId": "GetPeopleInSpace",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetAstrosJSONOkResponse"
+            "$ref": "#/components/responses/PeopleInSpaceResponse"
           }
         }
       }
@@ -84,11 +86,11 @@
           "latitude": "-19.5888"
         }
       },
-      "GetAstrosJSONOkJSONResponse": {
+      "PeopleInSpace": {
         "type": "object",
         "properties": {
           "people": {
-            "$ref": "#/components/schemas/GetAstrosJSONOkJSONResponsePeople"
+            "$ref": "#/components/schemas/Astronauts"
           },
           "number": {
             "type": "integer",
@@ -159,10 +161,10 @@
           "message": "success"
         }
       },
-      "GetAstrosJSONOkJSONResponsePeople": {
+      "Astronauts": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/GetAstrosJSONOkJSONResponsePeopleItems"
+          "$ref": "#/components/schemas/Astronaut"
         },
         "example": [
           {
@@ -215,7 +217,7 @@
           }
         ]
       },
-      "GetAstrosJSONOkJSONResponsePeopleItems": {
+      "Astronaut": {
         "type": "object",
         "properties": {
           "craft": {
@@ -256,12 +258,12 @@
           }
         }
       },
-      "GetAstrosJSONOkResponse": {
-        "description": "TODO",
+      "PeopleInSpaceResponse": {
+        "description": "Returns a list of astronauts currently in space",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/GetAstrosJSONOkJSONResponse"
+              "$ref": "#/components/schemas/PeopleInSpace"
             },
             "example": {
               "people": [

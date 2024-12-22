@@ -7,7 +7,7 @@
 ![API Health](https://img.shields.io/badge/API_health-90%25-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-Provides the current location of the International Space Station including latitude, longitude, and timestamp. Offers both JSON and JSONP formats for easy access. Users are advised to poll the API no more than once every 5 seconds. ([Source](https://freepublicapis.com/iss-current-location))
+Provides the current location of the International Space Station (including latitude, longitude, and timestamp) and a list of people currently in space. Users are advised to poll the API no more than once every 5 seconds.
 
 ## Installation
 
@@ -19,7 +19,7 @@ go get github.com/go-api-libs/iss-location/pkg/isslocation
 
 ## Usage
 
-### Example 1: 
+### Example 1: Get the current location of the International Space Station
 
 ```go
 package main
@@ -47,7 +47,7 @@ func main() {
 
 ```
 
-### Example 2: 
+### Example 2: Get a list of astronauts currently in space
 
 ```go
 package main
@@ -65,12 +65,12 @@ func main() {
 	}
 
 	ctx := context.Background()
-	getAstrosJSONOkJSONResponse, err := c.GetAstrosJSON(ctx)
+	peopleInSpace, err := c.GetPeopleInSpace(ctx)
 	if err != nil {
 		panic(err)
 	}
 
-	// Use getAstrosJSONOkJSONResponse object
+	// Use peopleInSpace object
 }
 
 ```

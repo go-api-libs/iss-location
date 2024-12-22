@@ -40,14 +40,14 @@ func NewClient() (*Client, error) {
 	return &Client{cli: http.DefaultClient}, nil
 }
 
-// GetIssLocation defines an operation.
+// Get the current location of the International Space Station
 //
 //	GET /iss-now.json
 func (c *Client) GetIssLocation(ctx context.Context) (*ISSLocation, error) {
 	return GetIssLocation[ISSLocation](ctx, c)
 }
 
-// GetIssLocation defines an operation.
+// Get the current location of the International Space Station
 // You can define a custom result to unmarshal the response into.
 //
 //	GET /iss-now.json
@@ -88,18 +88,18 @@ func GetIssLocation[R any](ctx context.Context, c *Client) (*R, error) {
 	}
 }
 
-// GetAstrosJSON defines an operation.
+// Get a list of astronauts currently in space
 //
 //	GET /astros.json
-func (c *Client) GetAstrosJSON(ctx context.Context) (*GetAstrosJSONOkJSONResponse, error) {
-	return GetAstrosJSON[GetAstrosJSONOkJSONResponse](ctx, c)
+func (c *Client) GetPeopleInSpace(ctx context.Context) (*PeopleInSpace, error) {
+	return GetPeopleInSpace[PeopleInSpace](ctx, c)
 }
 
-// GetAstrosJSON defines an operation.
+// Get a list of astronauts currently in space
 // You can define a custom result to unmarshal the response into.
 //
 //	GET /astros.json
-func GetAstrosJSON[R any](ctx context.Context, c *Client) (*R, error) {
+func GetPeopleInSpace[R any](ctx context.Context, c *Client) (*R, error) {
 	u := baseURL.JoinPath("/astros.json")
 	req := (&http.Request{
 		Header:     http.Header{"User-Agent": []string{userAgent}},
@@ -119,7 +119,7 @@ func GetAstrosJSON[R any](ctx context.Context, c *Client) (*R, error) {
 
 	switch rsp.StatusCode {
 	case http.StatusOK:
-		// TODO
+		// Returns a list of astronauts currently in space
 		switch mt, _, _ := strings.Cut(rsp.Header.Get("Content-Type"), ";"); mt {
 		case "application/json":
 			var out R
