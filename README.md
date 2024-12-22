@@ -3,7 +3,7 @@
 [![Official Documentation](https://img.shields.io/badge/docs-API-blue)](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.1-blue)](/api/openapi.json)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-api-libs/iss-location)](https://goreportcard.com/report/github.com/go-api-libs/iss-location)
-![Code Coverage](https://img.shields.io/badge/coverage-38%25-orange)
+![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![API Health](https://img.shields.io/badge/API_health-90%25-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
