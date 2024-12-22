@@ -13,7 +13,7 @@
   "paths": {
     "/iss-now.json": {
       "get": {
-        "operationId": "GetCurrentLocation",
+        "operationId": "GetIssLocation",
         "responses": {
           "200": {
             "$ref": "#/components/responses/ISSLocationResponse"

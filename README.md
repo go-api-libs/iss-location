@@ -4,7 +4,7 @@
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.1-blue)](/api/openapi.json)
 [![Go Report Card](https://goreportcard.com/badge/github.com/go-api-libs/iss-location)](https://goreportcard.com/report/github.com/go-api-libs/iss-location)
 ![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
-![API Health](https://img.shields.io/badge/API_health-85%25-green)
+![API Health](https://img.shields.io/badge/API_health-90%25-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 Provides the current location of the International Space Station including latitude, longitude, and timestamp. Offers both JSON and JSONP formats for easy access. Users are advised to poll the API no more than once every 5 seconds. ([Source](https://freepublicapis.com/iss-current-location))
@@ -37,7 +37,7 @@ func main() {
 	}
 
 	ctx := context.Background()
-	issLocation, err := c.GetCurrentLocation(ctx)
+	issLocation, err := c.GetIssLocation(ctx)
 	if err != nil {
 		panic(err)
 	}
