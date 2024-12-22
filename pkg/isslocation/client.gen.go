@@ -40,18 +40,18 @@ func NewClient() (*Client, error) {
 	return &Client{cli: http.DefaultClient}, nil
 }
 
-// Get defines an operation.
+// GetCurrentLocation defines an operation.
 //
 //	GET /iss-now.json
-func (c *Client) Get(ctx context.Context) (*ISSLocation, error) {
-	return Get[ISSLocation](ctx, c)
+func (c *Client) GetCurrentLocation(ctx context.Context) (*ISSLocation, error) {
+	return GetCurrentLocation[ISSLocation](ctx, c)
 }
 
-// Get defines an operation.
+// GetCurrentLocation defines an operation.
 // You can define a custom result to unmarshal the response into.
 //
 //	GET /iss-now.json
-func Get[R any](ctx context.Context, c *Client) (*R, error) {
+func GetCurrentLocation[R any](ctx context.Context, c *Client) (*R, error) {
 	u := baseURL.JoinPath("/iss-now.json")
 	req := (&http.Request{
 		Header:     http.Header{"User-Agent": []string{userAgent}},
