@@ -13,10 +13,10 @@
   "paths": {
     "/iss-now.json": {
       "get": {
-        "operationId": "GetIssNowJSON",
+        "operationId": "GetIssLocation",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetIssNowJSONOkResponse"
+            "$ref": "#/components/responses/ISSLocationResponse"
           }
         }
       }
@@ -24,7 +24,7 @@
   },
   "components": {
     "schemas": {
-      "GetIssNowJSONOkJSONResponse": {
+      "ISSLocation": {
         "type": "object",
         "properties": {
           "timestamp": {
@@ -32,7 +32,7 @@
             "example": 1734874602
           },
           "iss_position": {
-            "$ref": "#/components/schemas/GetIssNowJSONOkJSONResponseIssPosition"
+            "$ref": "#/components/schemas/ISSPosition"
           },
           "message": {
             "type": "string",
@@ -53,7 +53,7 @@
           "message": "success"
         }
       },
-      "GetIssNowJSONOkJSONResponseIssPosition": {
+      "ISSPosition": {
         "type": "object",
         "properties": {
           "longitude": {
@@ -76,12 +76,12 @@
       }
     },
     "responses": {
-      "GetIssNowJSONOkResponse": {
-        "description": "TODO",
+      "ISSLocationResponse": {
+        "description": "Returns the current location of the International Space Station",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/GetIssNowJSONOkJSONResponse"
+              "$ref": "#/components/schemas/ISSLocation"
             },
             "example": {
               "timestamp": 1734874602,

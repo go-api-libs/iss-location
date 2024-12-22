@@ -4,15 +4,15 @@
 
 package isslocation
 
-// GetIssNowJSONOkJSONResponse defines a model
-type GetIssNowJSONOkJSONResponse struct {
-	Timestamp   int                                    `json:"timestamp,omitzero"`
-	IssPosition GetIssNowJSONOkJSONResponseIssPosition `json:"iss_position"`
-	Message     string                                 `json:"message,omitzero"`
+// ISSLocation defines a model
+type ISSLocation struct {
+	Timestamp   int         `json:"timestamp,omitzero"`
+	IssPosition ISSPosition `json:"iss_position"`
+	Message     string      `json:"message,omitzero"`
 }
 
-// GetIssNowJSONOkJSONResponseIssPosition defines a model
-type GetIssNowJSONOkJSONResponseIssPosition struct {
+// ISSPosition defines a model
+type ISSPosition struct {
 	Longitude string `json:"longitude,omitzero"`
 	Latitude  string `json:"latitude,omitzero"`
 }

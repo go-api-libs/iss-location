@@ -40,18 +40,18 @@ func NewClient() (*Client, error) {
 	return &Client{cli: http.DefaultClient}, nil
 }
 
-// GetIssNowJSON defines an operation.
+// GetIssLocation defines an operation.
 //
 //	GET /iss-now.json
-func (c *Client) GetIssNowJSON(ctx context.Context) (*GetIssNowJSONOkJSONResponse, error) {
-	return GetIssNowJSON[GetIssNowJSONOkJSONResponse](ctx, c)
+func (c *Client) GetIssLocation(ctx context.Context) (*ISSLocation, error) {
+	return GetIssLocation[ISSLocation](ctx, c)
 }
 
-// GetIssNowJSON defines an operation.
+// GetIssLocation defines an operation.
 // You can define a custom result to unmarshal the response into.
 //
 //	GET /iss-now.json
-func GetIssNowJSON[R any](ctx context.Context, c *Client) (*R, error) {
+func GetIssLocation[R any](ctx context.Context, c *Client) (*R, error) {
 	u := baseURL.JoinPath("/iss-now.json")
 	req := (&http.Request{
 		Header:     http.Header{"User-Agent": []string{userAgent}},
@@ -71,7 +71,7 @@ func GetIssNowJSON[R any](ctx context.Context, c *Client) (*R, error) {
 
 	switch rsp.StatusCode {
 	case http.StatusOK:
-		// TODO
+		// Returns the current location of the International Space Station
 		switch mt, _, _ := strings.Cut(rsp.Header.Get("Content-Type"), ";"); mt {
 		case "application/json":
 			var out R

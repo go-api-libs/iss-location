@@ -37,12 +37,12 @@ func main() {
 	}
 
 	ctx := context.Background()
-	getIssNowJSONOkJSONResponse, err := c.GetIssNowJSON(ctx)
+	issLocation, err := c.GetIssLocation(ctx)
 	if err != nil {
 		panic(err)
 	}
 
-	// Use getIssNowJSONOkJSONResponse object
+	// Use issLocation object
 }
 
 ```
