@@ -1,0 +1,44 @@
+---
+version: 2
+interactions:
+    - id: 0
+      request:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        content_length: 0
+        transfer_encoding: []
+        trailer: {}
+        host: api.open-notify.org
+        remote_addr: ""
+        request_uri: ""
+        body: ""
+        form: {}
+        headers: {}
+        url: http://api.open-notify.org/iss-now.json
+        method: GET
+      response:
+        proto: HTTP/1.1
+        proto_major: 1
+        proto_minor: 1
+        transfer_encoding: []
+        trailer: {}
+        content_length: 112
+        uncompressed: false
+        body: '{"timestamp": 1734874602, "iss_position": {"longitude": "2.6217", "latitude": "-19.5888"}, "message": "success"}'
+        headers:
+            Access-Control-Allow-Origin:
+                - '*'
+            Connection:
+                - keep-alive
+            Content-Length:
+                - "112"
+            Content-Type:
+                - application/json
+            Date:
+                - Sun, 22 Dec 2024 13:36:42 GMT
+            Server:
+                - nginx/1.10.3
+        status: 200 OK
+        code: 200
+        duration: 2.33755225s

@@ -7,11 +7,94 @@
   },
   "servers": [
     {
-      "url": "TODO"
+      "url": "http://api.open-notify.org/"
     }
   ],
   "paths": {
-    "/": {}
+    "/iss-now.json": {
+      "get": {
+        "operationId": "GetIssNowJSON",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetIssNowJSONOkResponse"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetIssNowJSONOkJSONResponse": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "integer",
+            "example": 1734874602
+          },
+          "iss_position": {
+            "$ref": "#/components/schemas/GetIssNowJSONOkJSONResponseIssPosition"
+          },
+          "message": {
+            "type": "string",
+            "example": "success"
+          }
+        },
+        "required": [
+          "timestamp",
+          "iss_position",
+          "message"
+        ],
+        "example": {
+          "timestamp": 1734874602,
+          "iss_position": {
+            "longitude": "2.6217",
+            "latitude": "-19.5888"
+          },
+          "message": "success"
+        }
+      },
+      "GetIssNowJSONOkJSONResponseIssPosition": {
+        "type": "object",
+        "properties": {
+          "longitude": {
+            "type": "string",
+            "example": "2.6217"
+          },
+          "latitude": {
+            "type": "string",
+            "example": "-19.5888"
+          }
+        },
+        "required": [
+          "longitude",
+          "latitude"
+        ],
+        "example": {
+          "longitude": "2.6217",
+          "latitude": "-19.5888"
+        }
+      }
+    },
+    "responses": {
+      "GetIssNowJSONOkResponse": {
+        "description": "TODO",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GetIssNowJSONOkJSONResponse"
+            },
+            "example": {
+              "timestamp": 1734874602,
+              "iss_position": {
+                "longitude": "2.6217",
+                "latitude": "-19.5888"
+              },
+              "message": "success"
+            }
+          }
+        }
+      }
+    }
   },
   "externalDocs": {
     "description": "API documentation",

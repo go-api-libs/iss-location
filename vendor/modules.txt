@@ -1,3 +1,6 @@
+# github.com/go-api-libs/api v0.0.0-20241220213325-f2e74c88e4c9
+## explicit; go 1.23.2
+github.com/go-api-libs/api
 # github.com/go-json-experiment/json v0.0.0-20241222003016-5815faae9dc0
 ## explicit; go 1.23
 github.com/go-json-experiment/json
