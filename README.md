@@ -37,7 +37,7 @@ func main() {
 	}
 
 	ctx := context.Background()
-	issLocation, err := c.GetIssLocation(ctx)
+	issLocation, err := c.Get(ctx)
 	if err != nil {
 		panic(err)
 	}
