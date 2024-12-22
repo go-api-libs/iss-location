@@ -38,7 +38,7 @@ func main() {
 
 func record() (*recorder.Recorder, error) {
 	r, err := recorder.NewWithOptions(&recorder.Options{
-		CassetteName:       fmt.Sprintf("pkg/toggl/vcr/%s", time.Now().Format(time.DateOnly)),
+		CassetteName:       fmt.Sprintf("pkg/isslocation/vcr/%s", time.Now().Format(time.DateOnly)),
 		Mode:               recorder.ModeReplayWithNewEpisodes,
 		SkipRequestLatency: true,
 		RealTransport:      http.DefaultTransport,
