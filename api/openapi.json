@@ -1,0 +1,20 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ISS Current Location",
+    "description": "Provides the current location of the International Space Station including latitude, longitude, and timestamp. Offers both JSON and JSONP formats for easy access. Users are advised to poll the API no more than once every 5 seconds.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "TODO"
+    }
+  ],
+  "paths": {
+    "/": {}
+  },
+  "externalDocs": {
+    "description": "API documentation",
+    "url": "http://open-notify.org/Open-Notify-API/ISS-Location-Now/"
+  }
+}
