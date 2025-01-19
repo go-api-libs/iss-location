@@ -117,15 +117,20 @@ func makeStructFields(root reflect.Type) (sf structFields, serr *SemanticError) 
 					f.inline = false // let `unknown` take precedence
 				default:
 					serr = orErrorf(serr, t, "Go struct field %s cannot have any options other than `inline` or `unknown` specified", sf.Name)
-					continue // invalid inlined field; treat as ignored
+					if f.hasName {
+						continue // invalid inlined field; treat as ignored
+					}
+					f.fieldOptions = fieldOptions{name: f.name, quotedName: f.quotedName, inline: f.inline, unknown: f.unknown}
+					if f.inline && f.unknown {
+						f.inline = false // let `unknown` take precedence
+					}
 				}
 
 				// Reject any types with custom serialization otherwise
 				// it becomes impossible to know what sub-fields to inline.
 				tf := indirectType(f.typ)
-				if implementsWhich(tf, allMethodTypes...) != nil && tf != jsontextValueType {
+				if implementsAny(tf, allMethodTypes...) && tf != jsontextValueType {
 					serr = orErrorf(serr, t, "inlined Go struct field %s of type %s must not implement marshal or unmarshal methods", sf.Name, tf)
-					continue // invalid inlined field; treat as ignored
 				}
 
 				// Handle an inlined field that serializes to/from
@@ -151,7 +156,7 @@ func makeStructFields(root reflect.Type) (sf structFields, serr *SemanticError) 
 				case tf == jsontextValueType:
 					f.fncs = nil // specially handled in arshal_inlined.go
 				case tf.Kind() == reflect.Map && tf.Key().Kind() == reflect.String:
-					if implementsWhich(tf.Key(), allMethodTypes...) != nil {
+					if implementsAny(tf.Key(), allMethodTypes...) {
 						serr = orErrorf(serr, t, "inlined map field %s of type %s must have a string key that does not implement marshal or unmarshal methods", sf.Name, tf)
 						continue // invalid inlined field; treat as ignored
 					}
@@ -185,8 +190,8 @@ func makeStructFields(root reflect.Type) (sf structFields, serr *SemanticError) 
 					}
 					// Unfortunately, methods on the unexported field
 					// still cannot be called.
-					if implementsWhich(tf, allMethodTypes...) != nil ||
-						(f.omitzero && implementsWhich(tf, isZeroerType) != nil) {
+					if implementsAny(tf, allMethodTypes...) ||
+						(f.omitzero && implementsAny(tf, isZeroerType)) {
 						serr = orErrorf(serr, t, "Go struct field %s is not exported for method calls", sf.Name)
 						continue
 					}

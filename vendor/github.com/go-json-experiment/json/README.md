@@ -24,7 +24,7 @@ in v2 to be named the same and have a mostly compatible signature.
 Behaviorally, we should aim for 95% to 99% backwards compatibility.
 We do not aim for 100% compatibility since we want the freedom to break
 certain behaviors that are now considered to have been a mistake.
-We may provide options that can bring the v2 implementation to 100% compatibility,
+Options exist that can bring the v2 implementation to 100% compatibility,
 but it will not be the default.
 
 * **More flexible:** There is a
@@ -143,7 +143,7 @@ This table shows an overview of the changes:
 | -- | -- | ------- |
 | JSON object members are unmarshaled into a Go struct using a **case-insensitive name match**. | JSON object members are unmarshaled into a Go struct using a **case-sensitive name match**. | [CaseSensitivity](/v1/diff_test.go#:~:text=TestCaseSensitivity) |
 | When marshaling a Go struct, a struct field marked as `omitempty` is omitted if **the field value is an empty Go value**, which is defined as false, 0, a nil pointer, a nil interface value, and any empty array, slice, map, or string. | When marshaling a Go struct, a struct field marked as `omitempty` is omitted if **the field value would encode as an empty JSON value**, which is defined as a JSON null, or an empty JSON string, object, or array. | [OmitEmptyOption](/v1/diff_test.go#:~:text=TestOmitEmptyOption) |
-| The `string` option **does affect** Go bools. | The `string` option **does not affect** Go bools. | [StringOption](/v1/diff_test.go#:~:text=TestStringOption) |
+| The `string` option **does affect** Go strings and bools. | The `string` option **does not affect** Go strings or bools. | [StringOption](/v1/diff_test.go#:~:text=TestStringOption) |
 | The `string` option **does not recursively affect** sub-values of the Go field value. | The `string` option **does recursively affect** sub-values of the Go field value. | [StringOption](/v1/diff_test.go#:~:text=TestStringOption) |
 | The `string` option **sometimes accepts** a JSON null escaped within a JSON string. | The `string` option **never accepts** a JSON null escaped within a JSON string. | [StringOption](/v1/diff_test.go#:~:text=TestStringOption) |
 | A nil Go slice is marshaled as a **JSON null**. | A nil Go slice is marshaled as an **empty JSON array**. | [NilSlicesAndMaps](/v1/diff_test.go#:~:text=TestNilSlicesAndMaps) |
@@ -160,7 +160,6 @@ This table shows an overview of the changes:
 | Unmarshaling a JSON null into a non-empty Go value **inconsistently clears the value or does nothing**. | Unmarshaling a JSON null into a non-empty Go value **always clears the value**. | [MergeNull](/v1/diff_test.go#:~:text=TestMergeNull) |
 | Unmarshaling a JSON value into a non-empty Go value **follows inconsistent and bizarre behavior**. | Unmarshaling a JSON value into a non-empty Go value **always merges if the input is an object, and otherwise replaces**.  | [MergeComposite](/v1/diff_test.go#:~:text=TestMergeComposite) |
 | A `time.Duration` is represented as a **JSON number containing the decimal number of nanoseconds**. | A `time.Duration` is represented as a **JSON string containing the formatted duration (e.g., "1h2m3.456s")**. | [TimeDurations](/v1/diff_test.go#:~:text=TestTimeDurations) |
-| Unmarshaling a JSON number into a Go float beyond its representation **results in an error**. | Unmarshaling a JSON number into a Go float beyond its representation **uses the closest representable value (e.g., ±`math.MaxFloat`)**. | [MaxFloats](/v1/diff_test.go#:~:text=TestMaxFloats) |
 | A Go struct with only unexported fields **can be serialized**. | A Go struct with only unexported fields **cannot be serialized**. | [EmptyStructs](/v1/diff_test.go#:~:text=TestEmptyStructs) |
 
 See [diff_test.go](/v1/diff_test.go) for details about every change.
